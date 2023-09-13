@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Generator by API</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Quote Generator</h1>
+    <form id="jokeForm">
+      <label for="keyword">Enter a word you want your quote about:</label>
+      <input type="text" id="name-input" required>
+      <input id="joke-btn" type="submit">Generate Your Quote</input>
+    </form>
+    <div id="quote-result" id="quoteDisplay"></div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  let nameInput = document.getElementById("name-input");
+  let output = document.getElementById("quote-result");
+  
+  let jokeBtn = document.getElementById("jokeForm");
+
+  jokeBtn.addEventListener("submit", function () {
+    let nameValue = nameInput.value;
+    console.log(nameValue);
+    event.preventDefault();
+   const request = new Request(`http://localhost:8080/bot/chat?prompt=generate a joke on ${nameValue}`);
+    fetch(request)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(response.statusText);
+      }
+    })
+    .then((data) => {
+      document.getElementById("quote-result").innerText = data.content;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  });
+</script>
+
+<!-- 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 -->
+
+<!-- <script src="script.js"></script> -->
