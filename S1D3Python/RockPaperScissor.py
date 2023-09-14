@@ -45,6 +45,17 @@ def play_again():
         else:
             print("Invalid choice. Please enter 'yes' or 'no'.")
 
+def get_user_choice():
+    valid_choices = ['rock', 'paper', 'scissors']
+    
+    while True:
+        user_choice = input("Enter your choice (rock, paper, or scissors): ").strip().lower()
+        if user_choice in valid_choices:
+            return user_choice
+        else:
+            print("Invalid choice. Please choose rock, paper, or scissors.")
+
+
 def main():
     print("Welcome to Rock, Paper, Scissors!")
     scores = {'user': 0, 'computer': 0, 'draw': 0}
