@@ -53,6 +53,56 @@ def addlists(l1 , l2):
         nlist.extend(l2[minl:])    
     return nlist    
 
-list1 = [1, 2, 3, 4, 5]
-list2 = [10, 20, 30, 40]
+list1 = ["h", "m", "na", "i", "Vinay"]
+list2 = ["i", "y", "me", "s"]
 print(addlists(list1 , list2))
+
+
+# Concatenate two lists in the following order
+list1 = ["Hello ", "take "]
+list2 = ["Dear", "Sir"]
+# ['Hello Dear', 'Hello Sir', 'take Dear', 'take Sir']
+
+ansList = [x+y for x in list1 for y in list2]
+print(ansList)
+
+
+# Given a two Python list. Write a program to iterate both lists simultaneously and display items from list1 in original order and items from list2 in reverse order.
+list1 = [10, 20, 30, 40]
+list2 = [100, 200, 300, 400]
+# 10 400
+# 20 300
+# 30 200
+# 40 100
+list2.reverse()
+for i , j in zip(list1,list2):
+    print(i , j)
+
+employees = ['Kelly', 'Emma']
+defaults = {"designation": 'Developer', "salary": 8000}
+result = {i:defaults.copy()for i in employees}
+print(result)
+
+
+sample_dict = {
+    "name": "Kelly",
+    "age": 25,
+    "salary": 8000,
+    "city": "New york"}
+
+# # Keys to extract
+keys = ["name", "salary"]
+# //expected output
+
+# {'name': 'Kelly', 'salary': 8000}
+
+ans = {key : sample_dict[key] for key in keys }
+print(ans)
+
+# Given a nested tuple. Write a program to modify the first item (22) of a list inside the following tuple to 222
+nested_tuple = ((11, [22, 33]), (44, 55))
+modified_tuple = (
+    (nested_tuple[0][0], [222] + nested_tuple[0][1]),
+    nested_tuple[1]
+)
+print(modified_tuple)
