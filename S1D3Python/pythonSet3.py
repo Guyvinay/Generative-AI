@@ -101,3 +101,84 @@ def selectionSort(arr):
     return arr        
 ans = selectionSort(input)               
 print(ans)
+
+# 1. **Implement Stack using Queue**: Use Python's queue data structure to implement a stack.
+    # Input = push(1), push(2), pop(), push(3), pop(), pop()
+#     - *Output*: "1, None, 3, None, None"
+from queue import Queue
+
+class StackUsingQueue:
+    def __init__(self):
+        self.q1 = Queue()
+        self.q2 = Queue()
+    
+    def push(self, item):
+        # Add the item to q1
+        self.q1.put(item)
+
+    def pop(self):
+        if self.q1.empty():
+            return None
+
+        # Move all items from q1 to q2, except the last one
+        while self.q1.qsize() > 1:
+            self.q2.put(self.q1.get())
+
+        # Get and return the last item from q1 (which is the top of the stack)
+        top_item = self.q1.get()
+
+        # Swap q1 and q2 to maintain the stack order
+        self.q1, self.q2 = self.q2, self.q1
+
+        return top_item
+
+# Example usage:
+stack = StackUsingQueue()
+stack.push(1)
+stack.push(2)
+print(stack.pop())  # Output: 2
+stack.push(3)
+print(stack.pop())  # Output: 3
+print(stack.pop())  # Output: 1
+
+
+# 1. **FizzBuzz**: Write a Python program that prints the numbers from 1 to 100, but for multiples of three, print "Fizz" instead of the number, for multiples of five, print "Buzz", and for multiples of both three and five, print "FizzBuzz".
+#     - *Input*: None
+#     - *Output*: "1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz, 16,..."
+list=[]
+for i in range(1, 101):
+    if i % 3 == 0 and i % 5 == 0:
+        list.append("FizzBuzz")
+    elif i % 3 == 0:
+        list.append("Fizz")
+    elif i % 5 == 0:
+        list.append("Buzz")
+    else:
+        list.append(str(i))
+print(" ".join(list))
+
+
+# Read the input file
+with open("E:\VINAY\WEB-DVP\GITHUB-REPO\Generative-AI\S1D3Python\input.txt", "r") as file:
+    content = file.read()
+
+# Split the content into words using whitespace as the delimiter and count the words
+word_count = len(content.split())
+
+# Write the word count to the output file
+with open("E:\VINAY\WEB-DVP\GITHUB-REPO\Generative-AI\S1D3Python\output.txt", "w") as output_file:
+    output_file.write(f"Number of words: {word_count}")
+    output_file.write("\n")
+    output_file.write("Enjoying really")
+
+# 2. **Exception Handling**: Write a Python function that takes two numbers as inputs and returns their division, handling any potential exceptions (like division by zero).
+#     - *Input*: 5, 0
+#     - *Output*: "Cannot divide by zero."
+def divideNum(a,  b):
+    try:
+        res = a/b
+        return res
+    except ZeroDivisionError :
+        return "You're Going Beyond your limit, Stay in your limit, do not divide by Zero"
+print()
+print(divideNum(21 , 0))    
