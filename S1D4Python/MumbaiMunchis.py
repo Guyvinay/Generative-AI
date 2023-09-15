@@ -166,31 +166,3 @@ while True:
         print("Invalid choice. Please choose a valid option.")
 
 
-
-
-# # Main loop for user interaction
-# while True:
-#     print("\nMumbai Munchies Inventory Management System")
-#     print("1. Add a snack to the inventory")
-#     print("2. Remove a snack from the inventory")
-#     print("3. Update snack availability")
-#     print("4. Record a sale")
-#     print("5. View All Snacks")
-#     print("6. Exit")
-    
-#     choice = input("Enter your choice: ")
-    
-#     if choice == "1":
-#         add_snack()
-#     elif choice == "2":
-#         remove_snack()
-#     elif choice == "3":
-#         update_availability()
-#     elif choice == "4":
-#         record_sale()
-#     elif choice == "5":
-#         view_snacks()
-#     elif choice == "6":
-#         break
-#     else:
-#         print("Invalid choice. Please choose a valid option.")
