@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Entires</title>
+</head>
+<body>
+
+    <h1>Read Entires</h1>
+    <ul>
+        {% for key , value in data.items() %}
+        <li>{{key}}:{{value}}</li>
+        {% endfor %}
+    </ul>
+    <a href="/create">Create Entry</a>
+    <a href="/update">Update Entry</a>
+    <a href="/delete">Delete Entry</a>
+</body>
+</html>
