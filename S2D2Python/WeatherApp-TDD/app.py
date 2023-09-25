@@ -1,4 +1,6 @@
 # app.py (update the app.py file)
+
+# app.py (update the app.py file)
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
@@ -40,6 +42,66 @@ def get_weather_forecast(city, days_in_future):
     else:
         return "City not found", 404
 
+@app.route('/weather/', methods=['POST'])
+def add_city():
+    try:
+        data = request.get_json()
+        city = data.get('city')
+        current_weather = data.get('current')
+        forecast = data.get('forecast')
+        if city and current_weather and forecast:
+            weather_data[city] = {'current': current_weather, 'forecast': forecast}
+            return "City added successfully", 201
+        else:
+            return "Invalid data", 400
+    except Exception as e:
+        return "Invalid data", 400
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+# from flask import Flask, jsonify, request
+
+# app = Flask(__name__)
+
+# weather_data = {
+#     'San Francisco': {
+#         'current': {'temperature': 14, 'weather': 'Cloudy'},
+#         'forecast': [
+#             {'temperature': 15, 'weather': 'Cloudy'},
+#             {'temperature': 16, 'weather': 'Partly Cloudy'},
+#             # Add more forecast entries for future days
+#         ]
+#     },
+#     'New York': {
+#         'current': {'temperature': 20, 'weather': 'Sunny'},
+#         'forecast': [
+#             {'temperature': 22, 'weather': 'Sunny'},
+#             {'temperature': 23, 'weather': 'Clear'},
+#             # Add more forecast entries for future days
+#         ]
+#     },
+#     # Add data for other cities
+# }
+
+# @app.route('/weather/<string:city>/')
+# def get_weather(city):
+#     if city in weather_data:
+#         return jsonify(weather_data[city]['current'])
+#     else:
+#         return "City not found", 404
+
+# @app.route('/weather/<string:city>/<int:days_in_future>/')
+# def get_weather_forecast(city, days_in_future):
+#     if city in weather_data:
+#         if 0 <= days_in_future < len(weather_data[city]['forecast']):
+#             return jsonify(weather_data[city]['forecast'][days_in_future])
+#         else:
+#             return "Invalid day", 400
+#     else:
+#         return "City not found", 404
+
 
 # from flask import Flask, jsonify
 
@@ -68,5 +130,5 @@ def get_weather_forecast(city, days_in_future):
 # #     return f"Weather data for {city}"
 
 
-if __name__==('__main__'):
-    app.run(debug=True)
+# if __name__==('__main__'):
+#     app.run(debug=True)
