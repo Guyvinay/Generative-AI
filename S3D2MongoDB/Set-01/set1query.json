@@ -1,0 +1,40 @@
+<-// **Problem 1:**
+// - **Prerequisite**: Understand creating tables in SQL / collections in MongoDB
+// - **Problem**: Create a **`Customers`** table / collection with the following fields: **`id`** (unique identifier), **`name`**, **`email`**, **`address`**, and **`phone_number`**.
+// ->
+
+db.createCollection(
+"Customers",
+{
+    "_id":ObjectId,
+    "name":String,
+    "email":String,
+    "address":String,
+    "phone_number":String
+}
+)
+
+/*
+**Problem 2:**
+
+- **Prerequisite**: Understand inserting data into SQL tables / MongoDB collections
+- **Problem**: Insert five rows / documents into the **`Customers`** table / collection with data of your choice.
+*/
+db.Customers.insertMany([{ name: "jake", email: "jake@gmail.com", address: "pandos", phone_number: 98467579 },{ name: "jake", email: "jake@gmail.com", address: "pandos", phone_number: 98467579 },{ name: "jake", email: "jake@gmail.com", address: "pandos", phone_number: 98467579 },{ name: "jake", email: "jake@gmail.com", address: "pandos", phone_number: 98467579 }])
+
+/*
+**Problem 3:**
+
+- **Prerequisite**: Understand basic data fetching in SQL / MongoDB
+- **Problem**: Write a query to fetch all data from the **`Customers`** table / collection.
+
+*/
+
+-> db.Customers.find()
+
+/*
+**Problem 4:**
+
+- **Prerequisite**: Understand how to select specific fields in SQL / MongoDB
+- **Problem**: Write a query to select only the **`name`** and **`email`** fields for all customers.
+*/
