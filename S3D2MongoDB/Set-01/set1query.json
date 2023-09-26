@@ -70,19 +70,32 @@ db.customers.find({ name: /^A/ })
 **Problem 7:**
 Write a query to fetch all customers, ordered by name in descending order.
 */
+//Desc
+db.customers.find().sort({ name: -1 })
+//ASC
+db.customers.find().sort({ name: 1 })
+
+
+
+/*
+**Problem 8:**
+Write a query to update the address of the customer with id 4.
+*/
+db.Customers.updateOne(
+... {name:"Zoe"},
+... {$set:{
+... address:"New York"}
+... }
+... )
 
 
 
 
 /*
-**Problem 5:**
-- **Prerequisite**: Understand basic WHERE clause in SQL / MongoDB's find method
-- **Problem**: Write a query to fetch the customer with the **`id`** of 3.
-
+**Problem 9:**
+Write a query to fetch the top 3 customers when ordered by id in ascending order.
 */
+db.Customers.find().sort({_id:-1}).limit(3)
+db.Customers.find().sort({name:1}).limit(3)
+db.Customers.find().limit(3)
 
-/*
-**Problem 5:**
-- **Prerequisite**: Understand basic WHERE clause in SQL / MongoDB's find method
-- **Problem**: Write a query to fetch the customer with the **`id`** of 3.
-*/
