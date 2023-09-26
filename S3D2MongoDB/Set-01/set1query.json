@@ -30,11 +30,59 @@ db.Customers.insertMany([{ name: "jake", email: "jake@gmail.com", address: "pand
 
 */
 
--> db.Customers.find()
+-> db.Customers.find({})
 
 /*
 **Problem 4:**
 
 - **Prerequisite**: Understand how to select specific fields in SQL / MongoDB
 - **Problem**: Write a query to select only the **`name`** and **`email`** fields for all customers.
+*/
+-> db.Customers.find({},{name:1,email:1})
+db.customers.find({}, { _id: 0, name: 1, email: 1 })
+/*
+
+{} is the filter criteria, which selects all documents in the collection.
+The second parameter specifies the projection, where _id: 0 means to exclude the _id field, and name: 1 and email: 1 mean to include the name and email fields.
+*/
+
+/*
+**Problem 5:**
+Problem: Write a query to fetch the customer with the id of 3.
+*/
+
+db.Customers.find({_id:3})
+// d.Customers.find({},{name:"Vinay"})
+d.Customers.find({name:"Vinay"})
+
+/*var ObjectId = require('mongodb').ObjectId;
+var customerId = ObjectId("3");
+db.customers.find({ _id: customerId })*/
+
+/*
+**Problem 6:**
+ Write a query to fetch all customers whose name starts with 'A'.
+*/
+
+db.customers.find({ name: /^A/ })
+
+/*
+**Problem 7:**
+Write a query to fetch all customers, ordered by name in descending order.
+*/
+
+
+
+
+/*
+**Problem 5:**
+- **Prerequisite**: Understand basic WHERE clause in SQL / MongoDB's find method
+- **Problem**: Write a query to fetch the customer with the **`id`** of 3.
+
+*/
+
+/*
+**Problem 5:**
+- **Prerequisite**: Understand basic WHERE clause in SQL / MongoDB's find method
+- **Problem**: Write a query to fetch the customer with the **`id`** of 3.
 */
