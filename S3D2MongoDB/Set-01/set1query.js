@@ -1,10 +1,10 @@
-<-// **Problem 1:**
+// **Problem 1:**
 // - **Prerequisite**: Understand creating tables in SQL / collections in MongoDB
 // - **Problem**: Create a **`Customers`** table / collection with the following fields: **`id`** (unique identifier), **`name`**, **`email`**, **`address`**, and **`phone_number`**.
 // ->
 
 db.createCollection(
-"Customers",
+"Customers", 
 {
     "_id":ObjectId,
     "name":String,
@@ -20,7 +20,7 @@ db.createCollection(
 - **Prerequisite**: Understand inserting data into SQL tables / MongoDB collections
 - **Problem**: Insert five rows / documents into the **`Customers`** table / collection with data of your choice.
 */
-db.Customers.insertMany([{ name: "jake", email: "jake@gmail.com", address: "pandos", phone_number: 98467579 },{ name: "jake", email: "jake@gmail.com", address: "pandos", phone_number: 98467579 },{ name: "jake", email: "jake@gmail.com", address: "pandos", phone_number: 98467579 },{ name: "jake", email: "jake@gmail.com", address: "pandos", phone_number: 98467579 }])
+db.Customers.insertMany([{ name: "cus5", email: "cus5@gmail.com", address: "add5", phone: "9825738156" },{ name: "cus6", email: "cus6@gmail.com", address: "add6", phone: "9825738157" },{ name: "cus7", email: "cus7@gmail.com", address: "add7", phone: "9825738158" },{ name: "cus8", email: "cus8@gmail.com", address: "add8", phone: "9825738159" },{ name: "cus9", email: "cus9@gmail.com", address: "add9", phone: "98257381510" },{ name: "cus10", email: "cus10@gmail.com", address: "add10", phone: "98257381511" },{ name: "cus11", email: "cus11@gmail.com", address: "add11", phone: "9825738153" },{ name: "cus12", email: "cus12@gmail.com", address: "add12", phone: "98257381512" }])
 
 /*
 **Problem 3:**
@@ -30,7 +30,7 @@ db.Customers.insertMany([{ name: "jake", email: "jake@gmail.com", address: "pand
 
 */
 
--> db.Customers.find({})
+db.Customers.find({})
 
 /*
 **Problem 4:**
@@ -38,7 +38,7 @@ db.Customers.insertMany([{ name: "jake", email: "jake@gmail.com", address: "pand
 - **Prerequisite**: Understand how to select specific fields in SQL / MongoDB
 - **Problem**: Write a query to select only the **`name`** and **`email`** fields for all customers.
 */
--> db.Customers.find({},{name:1,email:1})
+db.Customers.find({},{name:1,email:1})
 db.customers.find({}, { _id: 0, name: 1, email: 1 })
 /*
 
@@ -82,12 +82,11 @@ db.customers.find().sort({ name: 1 })
 Write a query to update the address of the customer with id 4.
 */
 db.Customers.updateOne(
-... {name:"Zoe"},
-... {$set:{
-... address:"New York"}
-... }
-... )
-
+  {name:"Zoe"},
+ {$set:{
+ address:"New York"}
+ }
+)
 
 
 
@@ -99,3 +98,31 @@ db.Customers.find().sort({_id:-1}).limit(3)
 db.Customers.find().sort({name:1}).limit(3)
 db.Customers.find().limit(3)
 
+/*
+**Problem 10:**
+// Write a query to delete the customer with id 2.
+*/
+db.Customers.deleteOne({_id:ObjectId("65139357f6f95c40588d6195")})
+
+/*
+**Problem 11:**
+Write a query to count the number of customers.
+*/
+db.Customers.countDocuments()
+
+/*
+**Problem 12:**
+Write a query to fetch all customers except the first two when ordered by id in ascending order.
+*/
+db.Customers.find().sort({_id:1}).skip(2);
+db.Customers.find().sort({_id:-1}).skip(2)
+
+/*
+**Problem 13:**
+Write a query to fetch all customers whose id is greater than 2 and name starts with 'B'.*/
+db.Customers.find({
+    $and:[
+        {_id: {$gt: ObjectId("65139357f6f95c40588d6192")}},
+        {name:/^c/}
+    ]
+})
