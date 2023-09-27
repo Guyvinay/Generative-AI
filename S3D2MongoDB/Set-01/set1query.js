@@ -126,3 +126,29 @@ db.Customers.find({
         {name:/^c/}
     ]
 })
+
+/*
+**Problem 14:**
+Write a query to fetch all customers whose id is greater than 2 and name starts with 'B'.
+*/
+db.Customers.find({
+    $or:[
+        {_id:{$lt:ObjectId("65139357f6f95c40588d6192")}},
+        {name:/1$/}
+    ]
+})
+db.Customers.find({
+    $or:[
+        {_id:{$lt:ObjectId("65139357f6f95c40588d6192")}},
+        {name:/1$/}
+    ]
+})
+/*
+**Problem 15:**
+Write a query to fetch all customers where the phone_number field is not set or is null.*/
+db.Customers.find({
+    $or:[
+        {phone:{$exists:false}},
+        {phone:null}
+    ]
+})
