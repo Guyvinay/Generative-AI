@@ -1,2 +1,0 @@
-Problem 16:
- Create a `Restaurants` collection with the fields defined above.
