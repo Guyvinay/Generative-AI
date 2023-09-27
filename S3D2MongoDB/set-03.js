@@ -78,35 +78,38 @@ db.Rides.find({
 })
 /*
 Problem 32:
-Create a `Rides` collection with the fields defined above.
-*/
+Write a query to count the number of rides for a given driver_id.*/
+
+const driver_id = ObjectId("4");
+db.Rides.countDocuments({driver_id:driver_id})
 
 /*
 Problem 33:
-Create a `Rides` collection with the fields defined above.
-*/
+Write a query to update the fare of the ride with id 4.*/
+
+
+db.Rides.updateOne(
+    {_id:ObjectId("651455aff6f95c40588d61ac")},
+    {$set:{fare:1717171}}
+)
+
 
 /*
 Problem 34:
-Create a `Rides` collection with the fields defined above.
-*/
+Write a query to calculate the total fare for each driver_id.*/
+
+db.Rides.aggregate([
+    {
+      $group: {
+        _id: "$driver_id",
+        totalFare: { $sum: "$fare" }
+      }
+    }
+  ])
+  
 
 /*
 Problem 35:
-Create a `Rides` collection with the fields defined above.
-*/
+Write a query to delete the ride with id 2.*/
 
-/*
-Problem 36:
-Create a `Rides` collection with the fields defined above.
-*/
-
-/*
-Problem 37:
-Create a `Rides` collection with the fields defined above.
-*/
-
-/*
-Problem 38:
-Create a `Rides` collection with the fields defined above.
-*/
+db.Rides.deleteOne({_id:ObjectId("")})
