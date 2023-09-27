@@ -1,3 +1,92 @@
+
+/*
+MongoDB Queries
+*/
+
+
+// SELECT * FROM Products;
+db.Products.find()
+
+
+// SELECT Name, Price FROM Products;
+db.Products.find({}, {name: 1, price: 1})
+
+
+// SELECT * FROM Products WHERE Rating > 4;
+db.Products.find({rating: {$gt: 4}})
+
+
+// SELECT * FROM Products ORDER BY Price DESC;
+db.Products.find().sort({price: -1})
+
+
+// SELECT COUNT(*) FROM Products WHERE Category = 'Electronics';
+db.Products.count({category: 'Electronics'})
+
+
+// SELECT * FROM Products ORDER BY Price DESC LIMIT 5;
+db.Products.find().sort({price: -1}).limit(5)
+
+
+// SELECT * FROM Products ORDER BY Price DESC OFFSET 5;
+db.Products.find().sort({price: -1}).skip(5)
+
+
+// UPDATE Products SET Price = Price + 10 WHERE Category = 'Electronics';
+db.Products.updateMany({category: 'Electronics'
+
+}, {$inc: {price: 10}})
+// DELETE FROM Products WHERE In_Stock = FALSE;
+db.Products.deleteMany({in_stock: false})
+
+
+// SELECT DISTINCT Category FROM Products;
+db.Products.distinct('category')
+
+
+// SELECT AVG(Price) FROM Products WHERE Category = 'Electronics';
+db.Products.aggregate([{$match: {category: 'Electronics'}}, {$group: {_id: null, avgPrice: {$avg: '$price'}}}])
+
+
+
+// SELECT Category, COUNT(*) FROM Products GROUP BY Category;
+db.Products.aggregate([{$group: {_id: '$category', count: {$sum: 1}}}])
+
+
+
+// SELECT * FROM Products WHERE Category = 'Electronics' AND Rating > 4;
+db.Products.find({category: 'Electronics', rating: {$gt: 4}})
+
+// SELECT * FROM Products WHERE Rating > 4 OR In_Stock = TRUE;
+db.Products.find({$or: [{rating: {$gt: 4}}, {in_stock: true}]})
+
+// SELECT * FROM Products WHERE Name LIKE 'Ele%';
+db.Products.find({name: {$regex: '^Ele'}})
+
+// UPDATE Products SET Price = 100 WHERE ID = 1;
+db.Products.updateOne({_id: ObjectId("uniqueID")}, {$set: {price: 100}})
+
+// SELECT Orders.OrderID, Products.Name FROM Orders INNER JOIN Products ON Orders.ProductID = Products.ID;
+db.Products.find({"Orders.OrderID": "uniqueOrderID"}, {name: 1, "Orders.$": 1})
+
+// INSERT INTO Products (Name, Price, Category, Rating, In_Stock) VALUES ('Product 1', 99.99, 'Electronics', 4.5, TRUE), ('Product 2', 49.99, 'Books', 4.7, FALSE);
+
+db.Products.insertMany([{name: 'Product 1', price: 99.99, category: 'Electronics', rating: 4.5, in_stock: true}, {name: 'Product 2', price: 49.99,category: 'Books', rating: 4.7, in_stock: false}])
+
+// ALTER TABLE Products ALTER COLUMN Price TYPE DECIMAL(10,2) USING (Price::decimal);
+db.Products.find().forEach(function(doc) { doc.price = Number(doc.price); db.Products.save(doc); })
+
+// SELECT * FROM Products WHERE Rating IS NULL;
+db.Products.find({rating: null})
+
+
+
+
+
+
+
+
+
 // **Problem 1:**
 // - **Prerequisite**: Understand creating tables in SQL / collections in MongoDB
 // - **Problem**: Create a **`Customers`** table / collection with the following fields: **`id`** (unique identifier), **`name`**, **`email`**, **`address`**, and **`phone_number`**.
