@@ -29,19 +29,53 @@ db.Rides.insertMany([{start_location:"Start3",end_location:"End3",distance:123,r
 
 /*
 Problem 28:
-Create a `Rides` collection with the fields defined above.
-*/
+ Write a query to fetch all rides, ordered by fare in descending order.*/
 
-/*
+db.Rides.find().sort({fare:-1})
+
+
+ /*
 Problem 29:
-Create a `Rides` collection with the fields defined above.
-*/
+Write a query to calculate the total distance and total fare for all rides.*/
+
+db.Rides.aggregate({
+    $group:{
+        _id:null,
+        distance:{$sum:"$distance"},
+        fare:{$sum:"$fare"}
+    }
+})
 
 /*
 Problem 30:
-Create a `Rides` collection with the fields defined above.
+Create a `Rides`Write a query to calculate the average ride_time of all rides. collection with the fields defined above.
 */
 
+db.Rides.aggregate({
+    $group:{
+        _id:null,
+        avg_ride_time:{
+            $avg:"$ride_time"
+        }
+    }
+})
+
+/*
+Problem 31:
+Write a query to fetch all rides whose start_location or end_location contains 'Downtown'.*/
+
+db.Rides.find({
+    $or:[
+        {start_location:/Start1/i},
+        {end_location:/End2/i}
+    ]
+})
+db.Rides.find({
+    $or:[
+        {start_location: {$regex:/Start1/i} },
+        {end_location:{$regex:/End2/i} }
+    ]
+})
 /*
 Problem 32:
 Create a `Rides` collection with the fields defined above.
