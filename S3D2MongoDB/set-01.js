@@ -31,6 +31,7 @@ db.Customers.insertMany([{ name: "cus5", email: "cus5@gmail.com", address: "add5
 */
 
 db.Customers.find({})
+db.Customers.find()
 
 /*
 **Problem 4:**
@@ -39,6 +40,7 @@ db.Customers.find({})
 - **Problem**: Write a query to select only the **`name`** and **`email`** fields for all customers.
 */
 db.Customers.find({},{name:1,email:1})
+db.Customers.find({name:1,email:1})
 db.customers.find({}, { _id: 0, name: 1, email: 1 })
 /*
 
