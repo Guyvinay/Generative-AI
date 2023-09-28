@@ -1,9 +1,10 @@
 
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-
+CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5000/view_orders"}})  
 client = MongoClient("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6")
 
 db = client["mydb"]
@@ -12,6 +13,7 @@ order_collection = db["orders"]
 
 # Function to add a new dish to the menu
 @app.route('/add_dish',methods=['POST'])
+@cross_origin(origin='http://127.0.0.1:5000', headers=['Content-Type', 'Authorization'])
 def addNewDish():
     data = request.json
     dish_id = data.get('dish_id')
@@ -93,6 +95,7 @@ def update_order_status(order_id) :
 
 #Route to view all orders
 @app.route('/view_orders',methods=['GET'])
+@cross_origin(origin='http://127.0.0.1:5000', headers=['Content-Type', 'Authorization'])
 def view_orders() :
     orders = list(order_collection.find())
     displayed_orders = [] 
