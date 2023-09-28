@@ -55,6 +55,63 @@ def update_availability(dish_id) :
     else :
         return jsonify({"message": "Dish not found in the menu."}), 404
 
+#Route to take new order
+@app.route('/place_order',methods=['POST'])
+def place_order() :
+    data = request.json
+    customer_name = data.get("customer_name")
+    order_items = data.get("order_items")
+    total_price = sum(item['price']
+                      for item in menu_collection
+                      .find({"dish_id":{
+                                  "$in":order_items}}))
+    order = {
+        "customer_name":customer_name,
+        "order_items":order_items,
+        'status': 'received',
+        "total_price":total_price
+    }
+    result = order_collection.insert_one(order)
+    return jsonify({"message":f"Order recieved! OrderId: {result.inserted_id}"}),201
+
+#Route to update order status
+@app.route('/update_order_status/<order_id>',methods=['PUT'])
+def update_order_status(order_id) :
+    data = request.json
+    new_status = data.get("status")
+    # result = order_collection.update_one(
+    #     {"_id":f"ObjectId({order_id})"},
+    #     {"$set":{"status":new_status}}
+    #     )
+    result = order_collection.update_one({"_id": order_id}, {"$set": {"status": new_status}})
+    print(order_id)
+    if result.modified_count == 1 :
+        return jsonify({"message": f"Order {order_id} status updated to {new_status}."}), 200
+    else :
+        return jsonify({"message": "Order not found."}), 404
+
+
+#Route to view all orders
+@app.route('/view_orders',methods=['GET'])
+def view_orders() :
+    orders = list(order_collection.find())
+    displayed_orders = [] 
+    for order in orders :
+        order_item = {
+            "order_id":str(order["_id"]),
+            "customer_name":order["customer_name"],
+            "status":order["status"],
+            "order_items":[
+                {
+                    "name":item["name"],
+                    "price":item["price"]
+                }
+                for item in menu_collection.find({"dish_id":{"$in":order["order_items"]}})
+            ],
+            "total_price":order["total_price"]
+        }
+        displayed_orders.append(order_item)
+    return jsonify(displayed_orders),200
 
 
 if __name__ == "__main__" :
