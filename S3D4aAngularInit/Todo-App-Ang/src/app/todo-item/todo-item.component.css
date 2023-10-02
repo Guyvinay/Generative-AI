@@ -1,0 +1,10 @@
+.todoItem{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0 10px 0;
+}
+.buttonEle{
+    border: 1px solid red;
+}

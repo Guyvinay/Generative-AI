@@ -9,16 +9,10 @@
         >
         <input type="submit" value="Add Todo" class="todo-submit">
     </form>
-    <div class="todoItem">
-        <div><p>index</p></div>
-        <div><p>Todo</p></div>
-        <div >
-        <div class="buttonEle">
-            <button>Complete</button>
-            <button>Remove</button>
-        </div>
-    </div>
-    </div>
+    
+    <app-todo-item></app-todo-item>
+
+
     <div *ngFor= "let todo of todos; let i = index"
         class="todoItem">
         <div><p>{{i+1}}</p></div>
