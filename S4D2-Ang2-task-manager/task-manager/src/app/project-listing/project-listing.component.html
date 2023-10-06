@@ -1,0 +1,19 @@
+<p>project-listing works!</p>
+<div *ngFor="let project of projects" >
+
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Project Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>{{project.id}}</td>
+            <td>{{project.name}}</td>
+            <td>{{project.description}}</td>
+            <button (click)="deleteTask(project.id)" >Delete</button>
+        </tr>
+    </table>
+
+</div>

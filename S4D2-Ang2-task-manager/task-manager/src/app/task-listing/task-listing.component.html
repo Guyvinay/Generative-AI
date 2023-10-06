@@ -1,0 +1,19 @@
+<p>task-listing works!</p>
+<div *ngFor="let task of tasks" >
+
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Task Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>{{task.id}}</td>
+            <td>{{task.name}}</td>
+            <td>{{task.description}}</td>
+            <button (click)="deleteTask(task.id)" >Delete</button>
+        </tr>
+    </table>
+
+</div>
