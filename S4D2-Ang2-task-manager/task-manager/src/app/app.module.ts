@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { ProjectListingComponent } from './project-listing/project-listing.component';
 import { TaskListingComponent } from './task-listing/task-listing.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

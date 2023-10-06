@@ -1,18 +1,45 @@
-<p>task-listing works!</p>
-<div *ngFor="let task of tasks" >
+<h3>Task-listing works!</h3>
+<div>
 
+    <div>
+        <form (ngSubmit)="addTask()" >
+            <label for="taskName">Task Name: </label>
+            <input type="text" 
+                   id="taskName"
+                   [(ngModel)]="taskName"
+                   name="taskName"
+                   >
+            <label for="taskDescription">Task Description: </label>
+            <input type="text" 
+                   id="taskDescription"
+                   [(ngModel)]="taskDescription"
+                   name="taskDescription"
+                   >
+                   <button type="submit" >Add Task</button>
+        </form>    
+    </div>
+  
+
+    <div  *ngIf="tasks.length==0">No Projects Available</div>
+
+    <div>Total Tasks:-{{tasks.length}}</div>
 
     <table>
         <tr>
             <th>Id</th>
             <th>Task Name</th>
             <th>Description</th>
+            <th>Delete Task</th>
         </tr>
-        <tr>
+        <tr  *ngFor="let task of tasks" >
+            
             <td>{{task.id}}</td>
             <td>{{task.name}}</td>
             <td>{{task.description}}</td>
-            <button (click)="deleteTask(task.id)" >Delete</button>
+            <td>
+                <button (click)="deleteTask(task.id)" class="btn btn-primary" >Delete</button>
+            </td>
+            <!-- {{task|json}} -->
         </tr>
     </table>
 

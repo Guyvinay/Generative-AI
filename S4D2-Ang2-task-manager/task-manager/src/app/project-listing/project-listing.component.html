@@ -1,18 +1,37 @@
-<p>project-listing works!</p>
-<div *ngFor="let project of projects" >
-
-
+<h2>Project-listing works!</h2>
+<div>
+    <div>
+        <form (ngSubmit)="addProject()">
+            <label for="taskName">Project Name:</label>
+            <input 
+                   type="text" 
+                   id="taskName"
+                   [(ngModel)]="projectName"
+                   name="taskName"
+                   >
+            <label for="taskName">Project Description:</label>
+            <input 
+                   type="text" 
+                   id="taskDescription"
+                   [(ngModel)]="projectDescription"
+                   name="taskDescription"
+                   >
+                   <button type="submit">Add Project</button>
+        </form>
+    </div>
+    
     <table>
         <tr>
             <th>Id</th>
             <th>Project Name</th>
             <th>Description</th>
+            <th>Delete Project</th>
         </tr>
-        <tr>
+        <tr  *ngFor="let project of projects" >
             <td>{{project.id}}</td>
             <td>{{project.name}}</td>
             <td>{{project.description}}</td>
-            <button (click)="deleteTask(project.id)" >Delete</button>
+            <button (click)="deleteProject(project.id)" class="btn btn-primary">Delete</button>
         </tr>
     </table>
 
