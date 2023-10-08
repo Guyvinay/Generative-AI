@@ -1,0 +1,13 @@
+.mat-toolbar {
+    width: 100%;
+    background-color: azure;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Optionally, you can add some padding or other styles to the toolbar */
+  .mat-toolbar {
+    padding: 16px;
+    /* Add any other styling you prefer */
+  }
+  

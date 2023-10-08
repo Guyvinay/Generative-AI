@@ -1,0 +1,52 @@
+/* registration.component.css */
+
+/* npm install --save @ng-bootstrap/ng-bootstrap ngx-toastr */
+/* import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Import ng-bootstrap module */
+/* import { ToastrModule } from 'ngx-toastr'; // Import ngx-toastr module */
+
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+ 
+
+ 
+
+  /* Add this CSS to your global styles or component-specific styles */
+
+/* Styling for toast notifications */
+.toast-success {
+    background-color: #4CAF50; /* Green background for success */
+    color: white;
+    border-radius: 50px; /* Round shape */
+  }
+  
+  .toast-error {
+    background-color: #F44336; /* Red background for error */
+    color: white;
+    border-radius: 50px; /* Round shape */
+  }
+
+  .formEl{
+    align-items: center;
+    display: grid;
+    grid-template-columns:repeat(1, 400px);
+    width: 400px;
+    margin: auto;
+    /* border: 1px dashed red; */
+   }
+    .form-input{
+      /* background-color: rgb(63, 118, 167); */
+      padding-top: 20px;
+    }
