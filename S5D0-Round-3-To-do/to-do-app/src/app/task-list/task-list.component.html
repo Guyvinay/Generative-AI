@@ -1,0 +1,9 @@
+<p>task-list works!</p>
+<!-- task-list.component.html -->
+<ul>
+    <li *ngFor="let task of tasks">
+      <mat-checkbox [(ngModel)]="task.completed">{{ task.name }}</mat-checkbox>
+      <span *ngIf="task.dueDate">Due: {{ task.dueDate | date }}</span>
+    </li>
+  </ul>
+  
