@@ -20,7 +20,12 @@ import { MatMenuModule } from '@angular/material/menu'; // If you're using a mat
 import { MatButtonModule } from '@angular/material/button'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input'; // Import input module
-import { MatCardModule } from '@angular/material/card'; // Import card module
+import { MatCardModule } from '@angular/material/card';
+import { AdminAuthsComponent } from './admin-auths/admin-auths.component'; // Import card module
+import { MatTableModule } from '@angular/material/table';
+import { AddProjectComponent } from './project-management/add-project/add-project.component';
+import { ListProjectComponent } from './project-management/list-project/list-project.component';
+
 
 
 @NgModule({
@@ -32,7 +37,10 @@ import { MatCardModule } from '@angular/material/card'; // Import card module
     TeamManagementComponent,
     DashboardComponent,
     RegistrationComponent,
-    NavigationComponent
+    NavigationComponent,
+    AdminAuthsComponent,
+    AddProjectComponent,
+    ListProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,8 @@ import { MatCardModule } from '@angular/material/card'; // Import card module
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,8 +3,12 @@
 /* npm install --save @ng-bootstrap/ng-bootstrap ngx-toastr */
 /* import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Import ng-bootstrap module */
 /* import { ToastrModule } from 'ngx-toastr'; // Import ngx-toastr module */
+/* "@angular/material/prebuilt-themes/pink-bluegrey.css", */
+/* 
+  "node_modules/ngx-toastr/toastr.css" 
+  ng add @angular/material
 
-
+*/
 .success-message {
     color: green;
     font-weight: bold;
@@ -39,14 +43,9 @@
   }
 
   .formEl{
-    align-items: center;
-    display: grid;
-    grid-template-columns:repeat(1, 400px);
-    width: 400px;
-    margin: auto;
-    /* border: 1px dashed red; */
-   }
-    .form-input{
-      /* background-color: rgb(63, 118, 167); */
-      padding-top: 20px;
-    }
+      display: grid; 
+      width: 35%;
+      margin: auto;
+   
+  }
+ 

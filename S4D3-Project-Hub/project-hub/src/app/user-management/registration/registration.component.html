@@ -64,9 +64,13 @@
 
         <mat-form-field class="form-group">
           <mat-label>Role</mat-label>
-          <input matInput type="tel" class="form-input" name="role" [(ngModel)]="user.role" required>
+          <input matInput type="text" class="form-input" name="role" [(ngModel)]="user.role" required>
         </mat-form-field>
 
+        <mat-form-field class="form-group">
+          <mat-label>Profile Picture</mat-label>
+          <input matInput type="text" class="form-input" name="profile_picture" [(ngModel)]="user.profile_picture" required>
+        </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit">Register</button>
       </form>

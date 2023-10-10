@@ -22,7 +22,8 @@ export class RegistrationComponent {
     email: '',
     password: '',
     address:'',
-    role:''
+    role:'',
+    profile_picture:''
   };
 
   // constructor(
@@ -49,11 +50,11 @@ export class RegistrationComponent {
     name : this.user.name,
     email:this.user.email,
     password:this.user.password,
-    address:this.user.address,
-    role:this.user.role
+    role:this.user.role,
+    profile_picture:this.user.profile_picture
    }
    this.http.post(
-    'http://localhost:8080/customers' , 
+    'http://localhost:8080/projecthub/register' , 
     registrationData
    )
    .subscribe(
