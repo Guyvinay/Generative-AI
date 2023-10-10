@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-project-management',
@@ -22,6 +23,7 @@ export class ProjectManagementComponent implements OnInit {
     this.isAddProjects=!this.isAddProjects;
   }
   listAllProjects(){
+    // Swal.fire('Congratulations', 'You have Successfully registered. Now You can Login... ', 'success');
     this.isListProjects=!this.isListProjects
   }
 

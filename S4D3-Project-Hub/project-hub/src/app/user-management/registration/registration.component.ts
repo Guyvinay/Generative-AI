@@ -4,6 +4,7 @@ import { RegistrationService } from './registration.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registration',
@@ -59,9 +60,10 @@ export class RegistrationComponent {
    )
    .subscribe(
     (response) => {
-      this.successMessage = 'Registration Successfull!';
-      this.failureMessage = null;
-      // this.toastr.success('Registration successful!', 'Success', { timeOut: 3000 });
+      // this.successMessage = 'Registration Successfull!';
+      // this.failureMessage = null;
+      Swal.fire('Congratulations', 'You have Successfully registered. Now You can Login... ', 'success');
+
       console.log('Registration Successfull',response);
 
       setTimeout(()=>{
@@ -70,9 +72,12 @@ export class RegistrationComponent {
 
     },
     (error)=>{
-      this.failureMessage = 'Registration Failed';
+      // this.failureMessage = 'Registration Failed';
       // this.toastr.error('Registration failed. Please try again.', 'Error', { timeOut: 3000 }); // Show error toast
-      this.successMessage = null;
+      // this.successMessage = null;
+
+
+      Swal.fire('Oops...', 'Registration Failed. PLease Submit the Details Again to Register... ', 'error');
       console.log('Registration Failed: ', error)
     }
    )
