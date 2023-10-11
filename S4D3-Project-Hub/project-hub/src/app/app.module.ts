@@ -25,6 +25,8 @@ import { AdminAuthsComponent } from './admin-auths/admin-auths.component'; // Im
 import { MatTableModule } from '@angular/material/table';
 import { AddProjectComponent } from './project-management/add-project/add-project.component';
 import { ListProjectComponent } from './project-management/list-project/list-project.component';
+import { UserLoginComponent } from './user-management/user-login/user-login.component';
+
 
 
 
@@ -40,7 +42,8 @@ import { ListProjectComponent } from './project-management/list-project/list-pro
     NavigationComponent,
     AdminAuthsComponent,
     AddProjectComponent,
-    ListProjectComponent
+    ListProjectComponent,
+    UserLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,6 @@ import { ListProjectComponent } from './project-management/list-project/list-pro
     HttpClientModule,
     BrowserAnimationsModule,
     NgbModule, 
-    ToastrModule.forRoot({positionClass: 'toast-top-right',}),
     MatToolbarModule, 
     MatMenuModule,
     MatButtonModule,

@@ -9,7 +9,12 @@
   ng add @angular/material
 
 */
-.success-message {
+
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* .success-message {
     color: green;
     font-weight: bold;
     margin-top: 10px;
@@ -30,22 +35,22 @@
   /* Add this CSS to your global styles or component-specific styles */
 
 /* Styling for toast notifications */
-.toast-success {
-    background-color: #4CAF50; /* Green background for success */
+/* .toast-success {
+    background-color: #4CAF50; 
     color: white;
-    border-radius: 50px; /* Round shape */
+    border-radius: 50px; 
   }
   
-  .toast-error {
-    background-color: #F44336; /* Red background for error */
+ .toast-error {
+    background-color: #F44336; 
     color: white;
-    border-radius: 50px; /* Round shape */
-  }
+    border-radius: 50px;
+  } 
 
-  .formEl{
+ .formEl{
       display: grid; 
       width: 35%;
       margin: auto;
    
-  }
- 
+  } */
+   
